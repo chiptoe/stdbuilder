@@ -20,6 +20,5 @@ test('Concat all project files in order', () => {
 
 	// 7__main.js
 }());`;
-	console.log('result:' + result);
 	expect(result).toBe(expected);
 });
