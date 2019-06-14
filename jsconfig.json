@@ -1,0 +1,9 @@
+{
+	"target": "es2017",
+	"compilerOptions": {
+		"checkJs": true
+	},
+	"include": [
+		"src/*.js"
+	]
+}

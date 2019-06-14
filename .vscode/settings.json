@@ -1,0 +1,13 @@
+{
+	"editor.formatOnSave": false,
+
+	// Disable default VS Code behavior
+	"javascript.format.enable": false,
+
+	// Enable jsDoc type checking
+	// ts-check comment is required at top of file to enable type checking
+	"javascript.validate.enable": true,
+
+	"editor.insertSpaces": false,
+	"editor.tabSize": 4
+}
