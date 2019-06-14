@@ -5,6 +5,11 @@ test('Concat all project files in order', () => {
 	var result = build('./tests/builder/project/');
 	var expected = `(function() {
 	// 0__utils
+	set__('Utils', (function() {
+		return {
+			myFunc: () => {}
+		};
+	}()));
 
 	// 1__validations
 
