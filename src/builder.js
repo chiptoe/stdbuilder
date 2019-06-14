@@ -8,17 +8,19 @@ var Terser = require('terser');
  */
 exports.build = function(basepath) {
 	var folders = [
-		'./0__utils/',
-		'./1__validations/',
+		'./0__noconflict.js',
 
-		'./2__models/',
-		'./3__views/',
+		'./1__utils/',
+		'./2__validations/',
 
-		'./4__connections/',
-		'./5__services/',
-		'./6__controllers/',
+		'./3__models/',
+		'./4__views/',
 
-		'./7__main.js'
+		'./5__connections/',
+		'./6__services/',
+		'./7__controllers/',
+
+		'./8__main.js'
 	];
 
 	var builder = '';
