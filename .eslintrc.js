@@ -3,5 +3,8 @@ module.exports = {
 	parserOptions: {
 		ecmaVersion: 2017
 	},
-	globals: {}
+	globals: {
+		set__: true,
+		get__: true
+	}
 }
