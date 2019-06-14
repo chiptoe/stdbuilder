@@ -2,7 +2,7 @@
 var fs = require('fs');
 var Path = require('path');
 
-function build() {
+exports.build = function() {
 	var folders = [
 		'./0__utils/',
 		'./1__validations/',
@@ -32,7 +32,7 @@ function build() {
 	});
 
 	return builder;
-}
+};
 
 function indentFileContent(filepath) {
 	var lines = fs.readFileSync(filepath, 'utf8').split('\n');
