@@ -31,7 +31,9 @@ exports.build = function() {
 		}
 	});
 
-	return builder;
+	return `(function() {
+${builder}
+}());`;
 };
 
 function indentFileContent(filepath) {
