@@ -39,7 +39,7 @@ exports.build = function(basepath) {
 	builder = `(function() {
 ${builder.slice(0, -1)}}());`;
 
-	if (process.argv.indexOf('--min')) {
+	if (process.argv.indexOf('--min') !== -1) {
 		var result = Terser.minify(builder);
 		if (result.error) throw result.error;
 		builder = result.code;
