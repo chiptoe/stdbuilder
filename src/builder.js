@@ -1,6 +1,7 @@
 // @ts-check
 var fs = require('fs');
 var Path = require('path');
+var Terser = require('terser');
 
 exports.build = function(basepath) {
 	var folders = [
@@ -32,8 +33,16 @@ exports.build = function(basepath) {
 		}
 	});
 
-	return `(function() {
+	builder = `(function() {
 ${builder.slice(0, -1)}}());`;
+
+	if (process.argv.indexOf('--min')) {
+		var result = Terser.minify(builder);
+		if (result.error) throw result.error;
+		builder = result.code;
+	}
+
+	return builder;
 };
 
 function indentFileContent(filepath) {
