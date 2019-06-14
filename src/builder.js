@@ -2,7 +2,7 @@
 var fs = require('fs');
 var Path = require('path');
 
-exports.build = function() {
+exports.build = function(basepath) {
 	var folders = [
 		'./0__utils/',
 		'./1__validations/',
@@ -20,6 +20,7 @@ exports.build = function() {
 	var builder = '';
 
 	folders.forEach((path) => {
+		path = Path.resolve(basepath, path);
 		if (path.lastIndexOf('.js') === -1) {
 			var filenames = fs.readdirSync(path);
 			filenames.forEach((filename) => {
