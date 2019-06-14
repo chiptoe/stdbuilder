@@ -1,5 +1,8 @@
 var { test, expect } = global;
 var { build } = require('../src/builder');
+var fs = require('fs');
+
+fs.copyFileSync('./src/noconflict.js', './tests/builder/project/0__noconflict.js');
 
 test('Concat all project files in order', () => {
 	var result = build('./tests/builder/project/');

@@ -1,3 +1,4 @@
 node_modules
 coverage
 dist
+tests/builder/project/0__noconflict.js
