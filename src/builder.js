@@ -33,11 +33,17 @@ exports.build = function(basepath) {
 	});
 
 	return `(function() {
-${builder}
-}());`;
+${builder.slice(0, -1)}}());`;
 };
 
 function indentFileContent(filepath) {
 	var lines = fs.readFileSync(filepath, 'utf8').split('\n');
-	return lines.map((line) => '\t' + line).join('\n');
+	var builder = '';
+	lines.forEach((line) => {
+		if (line) {
+			builder += '\t' + line;
+		}
+		builder += '\n';
+	});
+	return builder;
 }
