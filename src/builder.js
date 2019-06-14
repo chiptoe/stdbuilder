@@ -3,6 +3,9 @@ var fs = require('fs');
 var Path = require('path');
 var Terser = require('terser');
 
+/**
+ * @param  {string=} basepath
+ */
 exports.build = function(basepath) {
 	var folders = [
 		'./0__utils/',
