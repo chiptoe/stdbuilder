@@ -21,7 +21,7 @@ exports.build = function(basepath) {
 	var builder = '';
 
 	folders.forEach((path) => {
-		path = Path.resolve(basepath, path);
+		path = Path.resolve(basepath || '', path);
 		if (path.lastIndexOf('.js') === -1) {
 			var filenames = fs.readdirSync(path);
 			filenames.forEach((filename) => {
