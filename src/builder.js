@@ -32,7 +32,7 @@ ${builder.slice(0, -1)}}());`;
 
 	if (process.argv.indexOf('--min') !== -1) {
 		var result = Terser.minify(builder, terserConfig);
-		if (result.error) throw result.error;
+		exports.tryReportTerserError(result);
 		builder = result.code;
 	}
 
@@ -41,6 +41,10 @@ ${builder.slice(0, -1)}}());`;
 
 exports.prepareBasepath = function(basepath) {
 	return basepath || './';
+};
+
+exports.tryReportTerserError = function(terserResult) {
+	if (terserResult.error) throw terserResult.error;
 };
 
 function indentFileContent(filepath) {
