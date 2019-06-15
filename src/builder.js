@@ -37,7 +37,8 @@ ${builder.slice(0, -1)}}());`;
 	}
 
 	if (process.argv.indexOf('--dist') !== -1) {
-		fs.writeFileSync(Path.resolve(basepath, 'dist/bundle.js'), builder);
+		if (!fs.existsSync(`${basepath}/dist/`)) fs.mkdirSync(`${basepath}/dist/`);
+		fs.writeFileSync(`${basepath}/dist/bundle.js`, builder);
 	}
 	else {
 		// eslint-disable-next-line no-console
