@@ -2,6 +2,7 @@
 var fs = require('fs');
 var Path = require('path');
 var Terser = require('terser');
+var terserConfig = require('../.terser');
 
 /**
  * @param  {string=} basepath
@@ -42,7 +43,7 @@ exports.build = function(basepath) {
 ${builder.slice(0, -1)}}());`;
 
 	if (process.argv.indexOf('--min') !== -1) {
-		var result = Terser.minify(builder);
+		var result = Terser.minify(builder, terserConfig);
 		if (result.error) throw result.error;
 		builder = result.code;
 	}
