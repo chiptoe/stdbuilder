@@ -1,5 +1,5 @@
 var { describe, test, expect } = global;
-var { build, prepareBasepath } = require('../src/builder');
+var { build, prepareBasepath, tryReportTerserError } = require('../src/builder');
 var fs = require('fs');
 
 fs.copyFileSync('./src/noconflict.js', './tests/builder/project/0__noconflict.js');
@@ -63,4 +63,9 @@ describe('prepareBasepath()', () => {
 	test('Prepare default path', () => {
 		expect(prepareBasepath()).toBe('./');
 	});
+});
+
+describe('Throw when terser minifier reports error', () => {
+	var terserResult = { error: new Error('Some terser error') };
+	expect(() => tryReportTerserError(terserResult)).toThrow(terserResult.error);
 });
