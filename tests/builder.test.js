@@ -10,6 +10,7 @@ test('Concat all project files in order', () => {
 	/* eslint-disable no-underscore-dangle */
 	var noconflict__ = 'PUT_MD5_HASH_HERE';
 
+	/* istanbul ignore next */
 	var global__ = (typeof(global) === 'object' ? global : window);
 	global__[noconflict__] = {};
 
