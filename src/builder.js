@@ -3,30 +3,17 @@ var fs = require('fs');
 var Path = require('path');
 var Terser = require('terser');
 var terserConfig = require('../.terser');
+var buildConfig = require('../.build');
 
 /**
  * @param  {string=} basepath
  */
 exports.build = function(basepath) {
-	var folders = [
-		'./0__noconflict.js',
-
-		'./1__utils/',
-		'./2__validations/',
-
-		'./3__models/',
-		'./4__views/',
-
-		'./5__connections/',
-		'./6__services/',
-		'./7__controllers/',
-
-		'./8__main.js'
-	];
+	var paths = buildConfig.build;
 
 	var builder = '';
 
-	folders.forEach((path) => {
+	paths.forEach((path) => {
 		path = Path.resolve(basepath || '', path);
 		if (path.lastIndexOf('.js') === -1) {
 			var filenames = fs.readdirSync(path);
