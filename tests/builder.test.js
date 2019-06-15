@@ -1,5 +1,5 @@
-var { test, expect } = global;
-var { build } = require('../src/builder');
+var { describe, test, expect } = global;
+var { build, prepareBasepath } = require('../src/builder');
 var fs = require('fs');
 
 fs.copyFileSync('./src/noconflict.js', './tests/builder/project/0__noconflict.js');
@@ -51,4 +51,16 @@ test('Concat all project files in order and minify', () => {
 	var result = build('./tests/builder/project/');
 	var expected = '(function(){var noconflict__="PUT_MD5_HASH_HERE";var global__=typeof global==="object"?global:window;global__[noconflict__]={};global__.set__=function(k,v){global__[noconflict__][k]=v};global__.get__=function(k){return global__[noconflict__][k]};set__("Utils",function(){return{myFunc:()=>{}}}());return{myFunc:get__("Utils").myFunc}})();';
 	expect(result).toBe(expected);
+});
+
+describe('prepareBasepath()', () => {
+	test('Prepare custom path', () => {
+		var path = './my/custom/path';
+		var result = prepareBasepath(path);
+		expect(result).toBe(path);
+	});
+
+	test('Prepare default path', () => {
+		expect(prepareBasepath()).toBe('./');
+	});
 });
