@@ -36,6 +36,14 @@ ${builder.slice(0, -1)}}());`;
 		builder = result.code;
 	}
 
+	if (process.argv.indexOf('--dist') !== -1) {
+		fs.writeFileSync(Path.resolve(basepath, 'dist/bundle.js'), builder);
+	}
+	else {
+		// eslint-disable-next-line no-console
+		console.log(builder);
+	}
+
 	return builder;
 };
 
