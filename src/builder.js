@@ -9,12 +9,13 @@ var buildConfig = require('../.build');
  * @param  {string=} basepath
  */
 exports.build = function(basepath) {
+	basepath = exports.prepareBasepath(basepath);
 	var paths = buildConfig.build;
 
 	var builder = '';
 
 	paths.forEach((path) => {
-		path = Path.resolve(basepath || '', path);
+		path = Path.resolve(basepath, path);
 		if (path.lastIndexOf('.js') === -1) {
 			var filenames = fs.readdirSync(path);
 			filenames.forEach((filename) => {
@@ -36,6 +37,10 @@ ${builder.slice(0, -1)}}());`;
 	}
 
 	return builder;
+};
+
+exports.prepareBasepath = function(basepath) {
+	return basepath || './';
 };
 
 function indentFileContent(filepath) {
