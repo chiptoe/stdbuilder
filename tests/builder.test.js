@@ -38,6 +38,9 @@ test('Concat all project files in order', () => {
 	// 7__controllers
 
 	// 8__main.js
+	return {
+		myFunc: get__('Utils').myFunc
+	};
 }());`;
 	expect(result).toBe(expected);
 });
