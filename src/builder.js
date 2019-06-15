@@ -3,7 +3,7 @@ var fs = require('fs');
 var Path = require('path');
 var Terser = require('terser');
 var terserConfig = require('../.terser');
-var buildConfig = require('../.build');
+var buildConfig = require(Path.resolve(process.cwd(), '.build'));
 
 /**
  * @param  {string=} basepath
