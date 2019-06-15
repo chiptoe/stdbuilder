@@ -44,3 +44,11 @@ test('Concat all project files in order', () => {
 }());`;
 	expect(result).toBe(expected);
 });
+
+test('Concat all project files in order and minify', () => {
+	process.argv.push('--min');
+
+	var result = build('./tests/builder/project/');
+	var expected = '(function(){var noconflict__="PUT_MD5_HASH_HERE";var global__=typeof global==="object"?global:window;global__[noconflict__]={};global__.set__=function(k,v){global__[noconflict__][k]=v};global__.get__=function(k){return global__[noconflict__][k]};set__("Utils",function(){return{myFunc:()=>{}}}());return{myFunc:get__("Utils").myFunc}})();';
+	expect(result).toBe(expected);
+});
