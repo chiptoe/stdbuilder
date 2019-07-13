@@ -1,4 +1,4 @@
 // 8__main.js
 return {
-	myFunc: get__('Utils').myFunc
+	myFunc: global_repository[PROJECT_HASH + '/utils/myFunc']
 };
