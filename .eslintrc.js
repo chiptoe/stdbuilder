@@ -4,6 +4,7 @@ module.exports = {
 		ecmaVersion: 2017
 	},
 	globals: {
+		PROJECT_HASH: true,
 		global_repository: true
 	}
 }
