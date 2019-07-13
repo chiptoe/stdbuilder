@@ -2,5 +2,5 @@
 (function() {
 	function myFunc() {}
 
-	global_repository['utils/myFunc'] = myFunc;
+	global_repository[PROJECT_HASH + '/utils/myFunc'] = myFunc;
 }());
