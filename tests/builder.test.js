@@ -6,7 +6,7 @@ const { execSync } = require('child_process');
 fs.copyFileSync('./src/noconflict.js', './tests/builder/project/0__noconflict.js');
 execSync('rm -rf ./tests/builder/project/dist/');
 
-test.only('Concat all project files in order', () => {
+test('Concat all project files in order', () => {
 	var result = build('./tests/builder/project/');
 	var expected = `(function() {
 	// eslint-disable-next-line no-unused-vars
@@ -49,7 +49,7 @@ test('Concat all project files in order and minify', () => {
 	process.argv.push('--min');
 
 	var result = build('./tests/builder/project/');
-	var expected = '(function(){var noconflict__="PUT_MD5_HASH_HERE";var global__=typeof global==="object"?global:window;global__[noconflict__]={};global__.set__=function(k,v){global__[noconflict__][k]=v};global__.get__=function(k){return global__[noconflict__][k]};set__("Utils",function(){return{myFunc:()=>{}}}());return{myFunc:get__("Utils").myFunc}})();';
+	var expected = '(function(){var PROJECT_HASH="PUT_MD5_HASH_HERE";var w=typeof global==="object"?global:window;w.global_repository=w;w=undefined;(function(){function myFunc(){}global_repository[PROJECT_HASH+"/utils/myFunc"]=myFunc})();return{myFunc:global_repository[PROJECT_HASH+"/utils/myFunc"]}})();';
 	expect(result).toBe(expected);
 });
 
@@ -58,7 +58,7 @@ test('Save bundle to file if --dist flag is provided', () => {
 	process.argv.push('--dist');
 
 	build('./tests/builder/project/');
-	var expected = '(function(){var noconflict__="PUT_MD5_HASH_HERE";var global__=typeof global==="object"?global:window;global__[noconflict__]={};global__.set__=function(k,v){global__[noconflict__][k]=v};global__.get__=function(k){return global__[noconflict__][k]};set__("Utils",function(){return{myFunc:()=>{}}}());return{myFunc:get__("Utils").myFunc}})();';
+	var expected = '(function(){var PROJECT_HASH="PUT_MD5_HASH_HERE";var w=typeof global==="object"?global:window;w.global_repository=w;w=undefined;(function(){function myFunc(){}global_repository[PROJECT_HASH+"/utils/myFunc"]=myFunc})();return{myFunc:global_repository[PROJECT_HASH+"/utils/myFunc"]}})();';
 	var result = fs.readFileSync('./tests/builder/project/dist/bundle.js', 'utf8');
 	expect(result).toBe(expected);
 
