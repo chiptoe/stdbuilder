@@ -4,7 +4,6 @@ module.exports = {
 		ecmaVersion: 2017
 	},
 	globals: {
-		set__: true,
-		get__: true
+		global_repository: true
 	}
 }
