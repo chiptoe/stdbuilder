@@ -1,11 +1,8 @@
-/* eslint-disable no-underscore-dangle */
-var noconflict__ = 'PUT_MD5_HASH_HERE';
+// eslint-disable-next-line no-unused-vars
+var PROJECT_HASH = 'PUT_MD5_HASH_HERE';
 
 /* istanbul ignore next */
-var global__ = (typeof(global) === 'object' ? global : window);
-global__[noconflict__] = {};
-
+var w = (typeof(global) === 'object' ? global : window);
 // @ts-ignore
-global__.set__ = function(k, v) { global__[noconflict__][k] = v; };
-// @ts-ignore
-global__.get__ = function(k) { return global__[noconflict__][k]; };
+w.global_repository = w;
+w = undefined;
