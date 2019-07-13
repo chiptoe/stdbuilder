@@ -1,6 +1,6 @@
 // 1__utils
-set__('Utils', (function() {
-	return {
-		myFunc: () => {}
-	};
-}()));
+(function() {
+	function myFunc() {}
+
+	global_repository['utils/myFunc'] = myFunc;
+}());
